@@ -1,0 +1,77 @@
+@model MvcVehicle.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+<head>
+    <script src='https://www.google.com/recaptcha/api.js' type="text/javascript"></script>
+</head>
+
+<form asp-action="Create" method="post">
+    <div class="form-horizontal">
+        <h4>Vehicle</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CarModel" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CarModel" class="form-control" />
+                <span asp-validation-for="CarModel" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EGsize" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="EGsize" class="form-control" />
+                <span asp-validation-for="EGsize" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Maker" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Maker" class="form-control" />
+                <span asp-validation-for="Maker" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="SOP" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="SOP" class="form-control" />
+                <span asp-validation-for="SOP" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Transmission" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Transmission" class="form-control" />
+                <span asp-validation-for="Transmission" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Hybrid" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Hybrid" class="form-control" />
+                <span asp-validation-for="Hybrid" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="g-recaptcha" data-sitekey="6LclxSgTAAAAACnPltatz1-Up6KU4_5XKWhic72Z"></div>
+                <br/>
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

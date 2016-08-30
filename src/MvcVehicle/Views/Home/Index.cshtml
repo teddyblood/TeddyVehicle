@@ -1,0 +1,13 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+@{
+    ViewData["Title"] = "reCaptcha Demo";
+}
+@using (Html.BeginForm("About", "Home", FormMethod.Post))
+{
+    <div class="g-recaptcha" data-sitekey="@(configuration["ReCaptcha:SiteKey"])"></div>
+    <br>
+    <input type="submit" value="Submit" />
+}
+@section Scripts {
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}

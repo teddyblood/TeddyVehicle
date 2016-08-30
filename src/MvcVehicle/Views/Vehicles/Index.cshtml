@@ -1,0 +1,82 @@
+
+@model CarMakerViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Vehicles" asp-action="Index" method="get">
+    <p>
+        <select asp-for="carMakersearch" asp-items="Model.makers">
+            <option value="">All</option>
+        </select>
+
+        Car model: <input type="text" name="searchString" >
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicles[0].Maker)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicles[0].EGsize)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicles[0].SOP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicles[0].CarModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicles[0].Transmission)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicles[0].Hybrid)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.vehicles) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Maker)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EGsize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CarModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transmission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hybrid)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
